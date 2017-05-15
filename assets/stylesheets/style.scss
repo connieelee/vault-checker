@@ -1,3 +1,51 @@
+@import 'palette';
+
 * {
   box-sizing: border-box;
+  margin: 0;
+}
+
+.container {
+  &::after {
+    content: "";
+    clear: both;
+    display: block;
+  }
+}
+
+.img-center {
+  display: block;
+  margin: auto;
+}
+
+.franklin-header {
+  padding-top: 17%;
+  width: 11vw;
+}
+
+.canal-header {
+  padding-top: 15%;
+  width: 9vw;
+}
+
+.status-open {
+  width: 28vw;
+}
+
+.status-sold-out {
+  width: 28vw;
+}
+
+.franklin-vault {
+  width: 50%;
+  height: 100vh;
+  float: left;
+  background-color: $bone;
+}
+
+.canal-vault {
+  width: 50%;
+  height: 100vh;
+  float: right;
+  background-color: $bone;
 }

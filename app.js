@@ -2,6 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
 const chalk = require('chalk');
+const moment = require('moment');
 const axios = require('axios');
 
 const { bearer_token_creds } = require('./secrets');
@@ -23,8 +24,9 @@ axios({
   app.use(express.static('public'));
 
   app.get('/twitterapi/vaulttweetstoday', (req, res, next) => {
-    const today = new Date();
-    const formattedDate = today.toISOString().slice(0, 10);
+    const today = moment(new Date()).format();
+    console.log(today);
+    const formattedDate = today.slice(0, 10);
 
     axios({
       method: 'get',
