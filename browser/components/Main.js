@@ -11,7 +11,7 @@ class Main extends React.Component {
     this.state = {
       franklin: 'loading',
       canal: 'loading',
-      lastUpdated: new Date(),
+      lastUpdated: moment(new Date()).format('h:mma'),
     };
   }
 
@@ -44,12 +44,12 @@ class Main extends React.Component {
         />
         <VaultDisplay
           location="canal"
-          containerStyles="right _-bg"
+          containerStyles="right"
           status={this.state.canal}
         />
         <div className="timestamp pink-bg text-center">
           <h3>Last updated:</h3>
-          <h1>{moment(this.state.lastUpdated).format('h:mma')}</h1>
+          <h1>{this.state.lastUpdated}</h1>
         </div>
       </div>
     );
