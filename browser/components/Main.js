@@ -1,34 +1,33 @@
 import React from 'react';
 import axios from 'axios';
 
-import FranklinVault from './FranklinVault';
-import CanalVault from './CanalVault';
+import VaultDisplay from './VaultDisplay';
+import { getLocation, isSoldOut, areBothSoldOut, isOpen } from '../utils';
 
 class Main extends React.Component {
   constructor() {
     super();
-
-  this.state = {
-      franklin: 'loading',
-      canal: 'loading',
+    this.state = {
+      franklin: 'open',
+      canal: 'open',
+      lastUpdated: new Date(),
     };
   }
 
   componentDidMount() {
-    /* TODO: time check based on hours of each location */
+    const nextState = {};
+    if (!isOpen('franklin')) nextState.franklin = 'closed';
+    if (!isOpen('canal')) nextState.canal = 'closed';
 
     axios.get('/twitterapi/vaulttweetstoday')
       .then(res => res.data)
       .then(tweets => {
-        const nextState = Object.assign({}, this.state);
-        tweets.forEach(tweet => {
-          const isFranklin = tweet => tweet.text.indexOf('#FranklinVault') > -1;
-          const isCanal = tweet => tweet.text.indexOf('#CanalVault') > -1;
-          const isSoldOut = tweet => tweet.text.toLowerCase().indexOf('sold out') > -1;
-
-          if (isFranklin && isSoldOut(tweet)) nextState.franklin = 'sold out';
-          if (isCanal && isSoldOut(tweet)) nextState.canal = 'sold out';
-        });
+        for (let i = 0; i < tweets.length && !areBothSoldOut(nextState); i++) {
+          const location = getLocation(tweets[i]);
+          if (!location) return;
+          const soldOut = isSoldOut(tweets[i]);
+          if (soldOut) nextState[location] = 'sold-out';
+        }
 
         this.setState(nextState);
       });
@@ -37,8 +36,8 @@ class Main extends React.Component {
   render() {
     return (
       <div className="container">
-        <FranklinVault status={this.state.franklin} />
-        <CanalVault status={this.state.canal} />
+        <VaultDisplay location="franklin" status={this.state.franklin} />
+        <VaultDisplay location="canal" status={this.state.canal} />
       </div>
     );
   }

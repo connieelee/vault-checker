@@ -25,7 +25,6 @@ axios({
 
   app.get('/twitterapi/vaulttweetstoday', (req, res, next) => {
     const today = moment(new Date()).format();
-    console.log(today);
     const formattedDate = today.slice(0, 10);
 
     axios({
