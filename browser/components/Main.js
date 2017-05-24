@@ -8,14 +8,14 @@ class Main extends React.Component {
   constructor() {
     super();
     this.state = {
-      franklin: 'open',
-      canal: 'open',
+      franklin: 'loading',
+      canal: 'loading',
       lastUpdated: new Date(),
     };
   }
 
   componentDidMount() {
-    const nextState = {};
+    const nextState = { franklin: 'open', canal: 'open' };
     if (!isOpen('franklin')) nextState.franklin = 'closed';
     if (!isOpen('canal')) nextState.canal = 'closed';
 
@@ -38,6 +38,7 @@ class Main extends React.Component {
       <div className="container">
         <VaultDisplay location="franklin" status={this.state.franklin} />
         <VaultDisplay location="canal" status={this.state.canal} />
+        <div>Last updated: {this.state.lastUpdated.toISOString()}</div>
       </div>
     );
   }
