@@ -45,8 +45,8 @@ axios({
     res.status(err.status || 500).send(err.message);
   });
 
-  app.listen('3000', () => {
-    console.log(chalk.cyan('Listening on port 3000!'));
+  app.listen(process.env.PORT || 3000, () => {
+    console.log(chalk.cyan(`Listening on port ${process.env.PORT || 3000}!`));
   });
 })
 .catch(console.error);
