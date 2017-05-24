@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import moment from 'moment';
 
 import VaultDisplay from './VaultDisplay';
 import { getLocation, isSoldOut, areBothSoldOut, isOpen } from '../utils';
@@ -36,9 +37,20 @@ class Main extends React.Component {
   render() {
     return (
       <div className="container">
-        <VaultDisplay location="franklin" status={this.state.franklin} />
-        <VaultDisplay location="canal" status={this.state.canal} />
-        <div>Last updated: {this.state.lastUpdated.toISOString()}</div>
+        <VaultDisplay
+          location="franklin"
+          containerStyles="left light-pink-bg"
+          status={this.state.franklin}
+        />
+        <VaultDisplay
+          location="canal"
+          containerStyles="right _-bg"
+          status={this.state.canal}
+        />
+        <div className="timestamp pink-bg text-center">
+          <h3>Last updated:</h3>
+          <h1>{moment(this.state.lastUpdated).format('h:mma')}</h1>
+        </div>
       </div>
     );
   }

@@ -1,8 +1,10 @@
 @import 'palette';
+@import 'backgrounds';
 
 * {
   box-sizing: border-box;
   margin: 0;
+  font-family: 'ABeeZee';
 }
 
 .container {
@@ -13,39 +15,58 @@
   }
 }
 
+.text-center {
+  text-align: center;
+}
+
+.left {
+  float: left;
+  width: 50%;
+  height: 100vh;
+}
+
+.right {
+  float: right;
+  width: 50%;
+  height: 100vh;
+}
+
+.location-header {
+  color: $bone;
+}
+
+.franklin-header {
+  width: 20%;
+}
+
+.canal-header {
+  width: 16%;
+}
+
 .img-center {
   display: block;
   margin: auto;
 }
 
-.franklin-header {
-  padding-top: 17%;
-  width: 11vw;
+.vault-img-group {
+  position:relative;
+  top: 15vh;
 }
 
-.canal-header {
-  padding-top: 15%;
-  width: 9vw;
+.status-img {
+  width: 55%;
 }
 
-.status-open {
-  width: 28vw;
-}
-
-.status-sold-out {
-  width: 28vw;
-}
-
-.franklin-vault {
-  width: 50%;
-  height: 100vh;
-  float: left;
-  background-color: $bone;
-}
-
-.canal-vault {
-  width: 50%;
-  height: 100vh;
-  float: right;
-  background-color: $light-pink;
+.timestamp {
+  width: 14em;
+  height: 5.5em;
+  position: fixed;
+  top: 94%;
+  left: 50%;
+  padding-top: 1em;
+  margin-top: -100px;
+  margin-left: -110px;
+  border-radius: 8px;
+  border: 3px solid $bone;
+  color: $bone;
 }
