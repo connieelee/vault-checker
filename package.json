@@ -4,11 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:css": "node-sass -w assets/stylesheets/style.scss -o public",
-    "build:watch": "webpack -w & npm run build:css",
-    "start:dev": "npm run build:watch & nodemon -e html,css,js app.js",
-    "start:production": "webpack & node app.js",
-    "start": "npm run start:production"
+    "build:css": "node-sass assets/stylesheets/style.scss -o public",
+    "build": "webpack & npm run build:css",
+    "start": "node app.js"
   },
   "keywords": [],
   "author": "",

@@ -1,0 +1,72 @@
+/* Coolors Exported Palette - coolors.co/2f718f-fc716b-e74f47-fee6e1-fccc61 */
+/* RGB */
+.yellow-bg {
+  background-color: #fccc61; }
+
+.blue-bg {
+  background-color: #2f718f; }
+
+.red-bg {
+  background-color: #e74f47; }
+
+.pink-bg {
+  background-color: #fc716b; }
+
+.light-pink-bg {
+  background-color: #fee6e1; }
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: 'ABeeZee'; }
+
+.container::after {
+  content: "";
+  clear: both;
+  display: block; }
+
+.text-center {
+  text-align: center; }
+
+.left {
+  float: left;
+  width: 50%;
+  height: 100vh; }
+
+.right {
+  float: right;
+  width: 50%;
+  height: 100vh; }
+
+.location-header {
+  color: #fffefd; }
+
+.franklin-header {
+  width: 20%; }
+
+.canal-header {
+  width: 16%; }
+
+.img-center {
+  display: block;
+  margin: auto; }
+
+.vault-img-group {
+  position: relative;
+  top: 15vh; }
+
+.status-img {
+  width: 55%; }
+
+.timestamp {
+  width: 14em;
+  height: 5.5em;
+  position: fixed;
+  top: 94%;
+  left: 50%;
+  padding-top: 1em;
+  margin-top: -100px;
+  margin-left: -110px;
+  border-radius: 8px;
+  border: 2.5px solid #fffefd;
+  color: #fffefd; }
