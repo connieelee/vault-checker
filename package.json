@@ -8,7 +8,7 @@
     "build:watch": "webpack -w & npm run build:css",
     "start:dev": "npm run build:watch & nodemon -e html,css,js app.js",
     "start:production": "node app.js",
-    "start": "npm run start:dev"
+    "start": "npm run start:production"
   },
   "keywords": [],
   "author": "",
