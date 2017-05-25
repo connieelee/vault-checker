@@ -5,7 +5,9 @@ const chalk = require('chalk');
 const moment = require('moment');
 const axios = require('axios');
 
-const { bearer_token_creds } = require('./secrets');
+let twitterBearerToken;
+if (process.env.TWITTER_BEARER_TOKEN) twitterBearerToken = process.env.TWITTER_BEARER;
+else twitterBearerToken = require('./secrets').bearer_token_creds;
 
 const app = express();
 
@@ -13,7 +15,7 @@ axios({
   method: 'post',
   url: 'https://api.twitter.com/oauth2/token',
   headers: {
-    Authorization: `Basic ${new Buffer(bearer_token_creds).toString('base64')}`,
+    Authorization: `Basic ${new Buffer(twitterBearerToken).toString('base64')}`,
     'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
   },
   data: 'grant_type=client_credentials',
