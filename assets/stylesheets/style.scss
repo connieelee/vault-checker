@@ -1,5 +1,6 @@
 @import 'palette';
 @import 'backgrounds';
+@import 'font-colors';
 
 * {
   box-sizing: border-box;
@@ -32,7 +33,7 @@
 }
 
 .location-header {
-  color: $bone;
+  margin-top: 6vh;
 }
 
 .franklin-header {
