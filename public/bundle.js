@@ -25835,17 +25835,19 @@ var Main = function (_React$Component) {
         { className: 'container' },
         _react2.default.createElement(_VaultDisplay2.default, {
           location: 'franklin',
-          containerStyles: 'left light-pink-bg',
+          headerColor: 'blue',
+          containerStyles: 'left yellow-bg',
           status: this.state.franklin
         }),
         _react2.default.createElement(_VaultDisplay2.default, {
           location: 'canal',
-          containerStyles: 'right',
+          headerColor: 'yellow',
+          containerStyles: 'right blue-bg',
           status: this.state.canal
         }),
         _react2.default.createElement(
           'div',
-          { className: 'timestamp pink-bg text-center' },
+          { className: 'timestamp red-bg text-center' },
           _react2.default.createElement(
             'h3',
             null,
@@ -26739,18 +26741,20 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var VaultDisplay = function VaultDisplay(_ref) {
   var location = _ref.location,
       containerStyles = _ref.containerStyles,
-      status = _ref.status;
+      status = _ref.status,
+      headerColor = _ref.headerColor;
   return _react2.default.createElement(
     "div",
     { className: containerStyles },
     _react2.default.createElement(
       "div",
       { className: "vault-img-group" },
-      _react2.default.createElement("img", {
-        className: "img-center " + location + "-header",
-        src: "/images/" + location + ".png",
-        alt: location + " vault"
-      }),
+      _react2.default.createElement(
+        "h1",
+        { className: "text-center location-header " + headerColor },
+        location,
+        " vault"
+      ),
       _react2.default.createElement("img", {
         className: "img-center status-img",
         src: "/images/" + status + ".png",

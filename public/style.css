@@ -15,6 +15,12 @@
 .light-pink-bg {
   background-color: #fee6e1; }
 
+.blue {
+  color: #2f718f; }
+
+.yellow {
+  color: #fccc61; }
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -39,7 +45,7 @@
   height: 100vh; }
 
 .location-header {
-  color: #fffefd; }
+  margin-top: 6vh; }
 
 .franklin-header {
   width: 20%; }

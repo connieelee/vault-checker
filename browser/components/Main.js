@@ -39,15 +39,17 @@ class Main extends React.Component {
       <div className="container">
         <VaultDisplay
           location="franklin"
-          containerStyles="left light-pink-bg"
+          headerColor="blue"
+          containerStyles="left yellow-bg"
           status={this.state.franklin}
         />
         <VaultDisplay
           location="canal"
-          containerStyles="right"
+          headerColor="yellow"
+          containerStyles="right blue-bg"
           status={this.state.canal}
         />
-        <div className="timestamp pink-bg text-center">
+        <div className="timestamp red-bg text-center">
           <h3>Last updated:</h3>
           <h1>{this.state.lastUpdated}</h1>
         </div>
