@@ -5,11 +5,10 @@ const chalk = require('chalk');
 const moment = require('moment');
 const axios = require('axios');
 
-let twitterBearerToken;
-if (process.env.TWITTER_BEARER_TOKEN) twitterBearerToken = process.env.TWITTER_BEARER_TOKEN;
-else twitterBearerToken = require('./secrets').bearer_token_creds;
-
 const app = express();
+const twitterBearerToken = process.env.TWITTER_BEARER_TOKEN ?
+                           process.env.TWITTER_BEARER_TOKEN :
+                           require('./secrets').bearer_token_creds;
 
 axios({
   method: 'post',

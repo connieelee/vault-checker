@@ -25,9 +25,10 @@ class Main extends React.Component {
       .then(tweets => {
         for (let i = 0; i < tweets.length && !areBothSoldOut(nextState); i++) {
           const location = getLocation(tweets[i]);
-          if (!location) return;
-          const soldOut = isSoldOut(tweets[i]);
-          if (soldOut) nextState[location] = 'sold-out';
+          if (location) {
+            const soldOut = isSoldOut(tweets[i]);
+            if (soldOut) nextState[location] = 'sold-out';
+          }
         }
 
         this.setState(nextState);
@@ -39,14 +40,14 @@ class Main extends React.Component {
       <div className="container">
         <VaultDisplay
           location="franklin"
-          headerColor="blue"
           containerStyles="left yellow-bg"
+          headerColor="blue"
           status={this.state.franklin}
         />
         <VaultDisplay
           location="canal"
-          headerColor="yellow"
           containerStyles="right blue-bg"
+          headerColor="yellow"
           status={this.state.canal}
         />
         <div className="timestamp red-bg text-center">

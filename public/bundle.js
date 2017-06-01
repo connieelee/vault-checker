@@ -25819,9 +25819,10 @@ var Main = function (_React$Component) {
       }).then(function (tweets) {
         for (var i = 0; i < tweets.length && !(0, _utils.areBothSoldOut)(nextState); i++) {
           var location = (0, _utils.getLocation)(tweets[i]);
-          if (!location) return;
-          var soldOut = (0, _utils.isSoldOut)(tweets[i]);
-          if (soldOut) nextState[location] = 'sold-out';
+          if (location) {
+            var soldOut = (0, _utils.isSoldOut)(tweets[i]);
+            if (soldOut) nextState[location] = 'sold-out';
+          }
         }
 
         _this2.setState(nextState);
@@ -25835,14 +25836,14 @@ var Main = function (_React$Component) {
         { className: 'container' },
         _react2.default.createElement(_VaultDisplay2.default, {
           location: 'franklin',
-          headerColor: 'blue',
           containerStyles: 'left yellow-bg',
+          headerColor: 'blue',
           status: this.state.franklin
         }),
         _react2.default.createElement(_VaultDisplay2.default, {
           location: 'canal',
-          headerColor: 'yellow',
           containerStyles: 'right blue-bg',
+          headerColor: 'yellow',
           status: this.state.canal
         }),
         _react2.default.createElement(
