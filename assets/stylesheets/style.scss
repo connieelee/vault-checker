@@ -24,16 +24,18 @@
   float: left;
   width: 50%;
   height: 100vh;
+  border-right: 2px solid white;
 }
 
 .right {
   float: right;
   width: 50%;
   height: 100vh;
+  border-left: 2px solid white;
 }
 
 .location-header {
-  margin-top: 6vh;
+  margin-top: 11vh;
 }
 
 .franklin-header {
@@ -56,6 +58,15 @@
 
 .status-img {
   width: 55%;
+}
+
+.tweet-card {
+  width: 65%;
+  margin: 4% auto;
+  background: $bone;
+  border-radius: 5px;
+  padding: 3% 5%;
+  text-align: center;
 }
 
 .timestamp {

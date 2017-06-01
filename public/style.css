@@ -21,6 +21,9 @@
 .yellow {
   color: #fccc61; }
 
+.light-pink {
+  color: #fee6e1; }
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -37,15 +40,17 @@
 .left {
   float: left;
   width: 50%;
-  height: 100vh; }
+  height: 100vh;
+  border-right: 2px solid white; }
 
 .right {
   float: right;
   width: 50%;
-  height: 100vh; }
+  height: 100vh;
+  border-left: 2px solid white; }
 
 .location-header {
-  margin-top: 6vh; }
+  margin-top: 11vh; }
 
 .franklin-header {
   width: 20%; }
@@ -63,6 +68,14 @@
 
 .status-img {
   width: 55%; }
+
+.tweet-card {
+  width: 65%;
+  margin: 4% auto;
+  background: #fffefd;
+  border-radius: 5px;
+  padding: 3% 5%;
+  text-align: center; }
 
 .timestamp {
   width: 14em;

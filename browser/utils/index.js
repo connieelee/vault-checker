@@ -10,6 +10,8 @@ export const getLocation = tweet => {
 export const isSoldOut = tweet => tweet.text.toLowerCase().indexOf('sold out') > -1;
 export const areBothSoldOut = state => state.franklin === 'sold-out' && state.canal === 'sold-out';
 
+export const listsSpecials = tweet => tweet.text.toLowerCase().indexOf('special') > -1;
+
 export const isWeekend = day => day === 'Sat' || day === 'Sun';
 export const isOpen = location => {
   const dayOfWeek = moment().format('ddd');

@@ -25761,6 +25761,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = __webpack_require__(34);
@@ -25798,8 +25800,8 @@ var Main = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).call(this));
 
     _this.state = {
-      franklin: 'loading',
-      canal: 'loading',
+      franklin: { specials: {}, soldOut: {} },
+      canal: { specials: {}, soldOut: {} },
       lastUpdated: (0, _moment2.default)(new Date()).format('h:mma')
     };
     return _this;
@@ -25810,20 +25812,22 @@ var Main = function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      var nextState = { franklin: 'open', canal: 'open' };
-      if (!(0, _utils.isOpen)('franklin')) nextState.franklin = 'closed';
-      if (!(0, _utils.isOpen)('canal')) nextState.canal = 'closed';
-
       _axios2.default.get('/twitterapi/vaulttweetstoday').then(function (res) {
         return res.data;
       }).then(function (tweets) {
-        for (var i = 0; i < tweets.length && !(0, _utils.areBothSoldOut)(nextState); i++) {
-          var location = (0, _utils.getLocation)(tweets[i]);
+        var nextState = Object.assign({}, _this2.state);
+        tweets.forEach(function (tweet) {
+          var location = (0, _utils.getLocation)(tweet);
           if (location) {
-            var soldOut = (0, _utils.isSoldOut)(tweets[i]);
-            if (soldOut) nextState[location] = 'sold-out';
+            var slimTweet = {
+              text: tweet.text,
+              time: (0, _moment2.default)(tweet.created_at).format('h:mma')
+            };
+
+            if ((0, _utils.listsSpecials)(tweet)) nextState[location].specials = slimTweet;
+            if ((0, _utils.isSoldOut)(tweet)) nextState[location].soldOut = slimTweet;
           }
-        }
+        });
 
         _this2.setState(nextState);
       });
@@ -25834,21 +25838,19 @@ var Main = function (_React$Component) {
       return _react2.default.createElement(
         'div',
         { className: 'container' },
-        _react2.default.createElement(_VaultDisplay2.default, {
+        _react2.default.createElement(_VaultDisplay2.default, _extends({
           location: 'franklin',
-          containerStyles: 'left yellow-bg',
-          headerColor: 'blue',
-          status: this.state.franklin
-        }),
-        _react2.default.createElement(_VaultDisplay2.default, {
+          containerStyles: 'left blue-bg',
+          headerColor: 'light-pink'
+        }, this.state.franklin)),
+        _react2.default.createElement(_VaultDisplay2.default, _extends({
           location: 'canal',
-          containerStyles: 'right blue-bg',
-          headerColor: 'yellow',
-          status: this.state.canal
-        }),
+          containerStyles: 'right light-pink-bg',
+          headerColor: 'blue'
+        }, this.state.canal)),
         _react2.default.createElement(
           'div',
-          { className: 'timestamp red-bg text-center' },
+          { className: 'timestamp pink-bg text-center' },
           _react2.default.createElement(
             'h3',
             null,
@@ -26742,8 +26744,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var VaultDisplay = function VaultDisplay(_ref) {
   var location = _ref.location,
       containerStyles = _ref.containerStyles,
-      status = _ref.status,
-      headerColor = _ref.headerColor;
+      headerColor = _ref.headerColor,
+      specials = _ref.specials,
+      soldOut = _ref.soldOut;
   return _react2.default.createElement(
     "div",
     { className: containerStyles },
@@ -26756,11 +26759,34 @@ var VaultDisplay = function VaultDisplay(_ref) {
         location,
         " vault"
       ),
-      _react2.default.createElement("img", {
-        className: "img-center status-img",
-        src: "/images/" + status + ".png",
-        alt: status
-      })
+      _react2.default.createElement(
+        "div",
+        { className: "tweet-card" },
+        _react2.default.createElement(
+          "h3",
+          null,
+          specials.text
+        ),
+        _react2.default.createElement(
+          "p",
+          null,
+          specials.time
+        )
+      ),
+      _react2.default.createElement(
+        "div",
+        { className: "tweet-card" },
+        _react2.default.createElement(
+          "h3",
+          null,
+          soldOut.text
+        ),
+        _react2.default.createElement(
+          "p",
+          null,
+          soldOut.time
+        )
+      )
     )
   );
 };
@@ -26800,7 +26826,7 @@ _reactDom2.default.render(_react2.default.createElement(_Main2.default, null), d
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.isOpen = exports.isWeekend = exports.areBothSoldOut = exports.isSoldOut = exports.getLocation = undefined;
+exports.isOpen = exports.isWeekend = exports.listsSpecials = exports.areBothSoldOut = exports.isSoldOut = exports.getLocation = undefined;
 
 var _moment = __webpack_require__(0);
 
@@ -26825,6 +26851,10 @@ var isSoldOut = exports.isSoldOut = function isSoldOut(tweet) {
 };
 var areBothSoldOut = exports.areBothSoldOut = function areBothSoldOut(state) {
   return state.franklin === 'sold-out' && state.canal === 'sold-out';
+};
+
+var listsSpecials = exports.listsSpecials = function listsSpecials(tweet) {
+  return tweet.text.toLowerCase().indexOf('special') > -1;
 };
 
 var isWeekend = exports.isWeekend = function isWeekend(day) {
