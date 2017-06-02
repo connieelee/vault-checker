@@ -3,16 +3,13 @@ import axios from 'axios';
 import moment from 'moment';
 
 import VaultDisplay from './VaultDisplay';
+import initialState from '../initialState';
 import { getLocation, isSoldOut, listsSpecials } from '../utils';
 
 class Main extends React.Component {
   constructor() {
     super();
-    this.state = {
-      franklin: { specials: {}, soldOut: {} },
-      canal: { specials: {}, soldOut: {} },
-      lastUpdated: moment(new Date()).format('h:mma'),
-    };
+    this.state = initialState;
   }
 
   componentDidMount() {

@@ -24,6 +24,9 @@
 .light-pink {
   color: #fee6e1; }
 
+.grey {
+  color: lightgray; }
+
 * {
   box-sizing: border-box;
   margin: 0;

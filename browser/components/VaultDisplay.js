@@ -1,4 +1,5 @@
 import React from 'react';
+import TweetCard from './TweetCard';
 
 const VaultDisplay = ({ location, containerStyles, headerColor, specials, soldOut }) => (
   <div className={containerStyles}>
@@ -6,14 +7,13 @@ const VaultDisplay = ({ location, containerStyles, headerColor, specials, soldOu
       <h1 className={`text-center location-header ${headerColor}`}>
         {location} vault
       </h1>
-      <div className="tweet-card">
-        <h3>{specials.text}</h3>
-        <p>{specials.time}</p>
-      </div>
-      <div className="tweet-card">
-        <h3>{soldOut.text}</h3>
-        <p>{soldOut.time}</p>
-      </div>
+      {
+        !specials && !soldOut ? <TweetCard text="We're closed right now!" /> :
+        <div>
+          <TweetCard text={specials.text} time={specials.time} />
+          <TweetCard text={soldOut.text} time={soldOut.time} />
+        </div>
+      }
     </div>
   </div>
 );
