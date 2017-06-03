@@ -3,20 +3,24 @@ import axios from 'axios';
 import moment from 'moment';
 
 import VaultDisplay from './VaultDisplay';
-import initialState from '../initialState';
+import defaultState from '../defaultState';
 import { getLocation, isSoldOut, listsSpecials } from '../utils';
 
 class Main extends React.Component {
   constructor() {
     super();
-    this.state = initialState;
+    this.state = {
+      franklin: {},
+      canal: {},
+      lastUpdated: moment(new Date()).format('h:mma'),
+    };
   }
 
   componentDidMount() {
     axios.get('/twitterapi/vaulttweetstoday')
       .then(res => res.data)
       .then(tweets => {
-        const nextState = Object.assign({}, this.state);
+        const nextState = defaultState;
         tweets.forEach(tweet => {
           const location = getLocation(tweet);
           if (location) {
@@ -51,7 +55,7 @@ class Main extends React.Component {
         />
         <div className="timestamp pink-bg text-center">
           <h3>Last updated:</h3>
-          <h1>{this.state.lastUpdated}</h1>
+          <h2>{this.state.lastUpdated}</h2>
         </div>
       </div>
     );

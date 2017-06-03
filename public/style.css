@@ -1,3 +1,8 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: 'ABeeZee'; }
+
 /* Coolors Exported Palette - coolors.co/2f718f-fc716b-e74f47-fee6e1-fccc61 */
 /* RGB */
 .yellow-bg {
@@ -27,10 +32,26 @@
 .grey {
   color: lightgray; }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  font-family: 'ABeeZee'; }
+.tweet-card {
+  width: 65%;
+  margin: 4% auto;
+  background: #fffefd;
+  border-radius: 5px;
+  padding: 3% 5%;
+  text-align: center; }
+
+.tweet-card h2 {
+  margin-bottom: 6%; }
+
+.tweet-card hr {
+  width: 4em;
+  margin: 4% auto;
+  border: 0;
+  height: 1px;
+  background: grey; }
+
+.closed-sign {
+  padding: 5%; }
 
 .container::after {
   content: "";
@@ -39,6 +60,10 @@
 
 .text-center {
   text-align: center; }
+
+.img-center {
+  display: block;
+  margin: auto; }
 
 .left {
   float: left;
@@ -61,10 +86,6 @@
 .canal-header {
   width: 16%; }
 
-.img-center {
-  display: block;
-  margin: auto; }
-
 .vault-img-group {
   position: relative;
   top: 15vh; }
@@ -72,22 +93,14 @@
 .status-img {
   width: 55%; }
 
-.tweet-card {
-  width: 65%;
-  margin: 4% auto;
-  background: #fffefd;
-  border-radius: 5px;
-  padding: 3% 5%;
-  text-align: center; }
-
 .timestamp {
-  width: 14em;
+  width: 12.5em;
   height: 5.5em;
   position: fixed;
   top: 94%;
   left: 50%;
-  padding-top: 1em;
-  margin-top: -100px;
+  padding-top: 1.13em;
+  margin-top: -105px;
   margin-left: -110px;
   border-radius: 8px;
   border: 2.5px solid #fffefd;

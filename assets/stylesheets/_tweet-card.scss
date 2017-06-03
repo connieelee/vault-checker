@@ -1,0 +1,24 @@
+.tweet-card {
+  width: 65%;
+  margin: 4% auto;
+  background: $bone;
+  border-radius: 5px;
+  padding: 3% 5%;
+  text-align: center;
+}
+
+.tweet-card h2 {
+  margin-bottom: 6%;
+}
+
+.tweet-card hr {
+  width: 4em;
+  margin: 4% auto;
+  border: 0;
+  height: 1px;
+  background: grey;
+}
+
+.closed-sign {
+  padding: 5%;
+}

@@ -1,12 +1,13 @@
-@import 'palette';
-@import 'backgrounds';
-@import 'font-colors';
-
 * {
   box-sizing: border-box;
   margin: 0;
   font-family: 'ABeeZee';
 }
+
+@import 'palette';
+@import 'backgrounds';
+@import 'font-colors';
+@import 'tweet-card';
 
 .container {
   &::after {
@@ -18,6 +19,11 @@
 
 .text-center {
   text-align: center;
+}
+
+.img-center {
+  display: block;
+  margin: auto;
 }
 
 .left {
@@ -46,11 +52,6 @@
   width: 16%;
 }
 
-.img-center {
-  display: block;
-  margin: auto;
-}
-
 .vault-img-group {
   position:relative;
   top: 15vh;
@@ -60,23 +61,14 @@
   width: 55%;
 }
 
-.tweet-card {
-  width: 65%;
-  margin: 4% auto;
-  background: $bone;
-  border-radius: 5px;
-  padding: 3% 5%;
-  text-align: center;
-}
-
 .timestamp {
-  width: 14em;
+  width: 12.5em;
   height: 5.5em;
   position: fixed;
   top: 94%;
   left: 50%;
-  padding-top: 1em;
-  margin-top: -100px;
+  padding-top: 1.13em;
+  margin-top: -105px;
   margin-left: -110px;
   border-radius: 8px;
   border: 2.5px solid $bone;
