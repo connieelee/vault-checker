@@ -7,7 +7,7 @@
     "build:watch": "webpack -w & node-sass assets/stylesheets/style.scss -o public -w",
     "start:dev": "npm run build:watch & nodemon app.js",
     "build": "webpack & node-sass assets/stylesheets/style.scss -o public",
-    "start": "npm run build & node app.js"
+    "start": "node app.js"
   },
   "keywords": [],
   "author": "",
