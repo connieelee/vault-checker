@@ -25897,12 +25897,12 @@ var Main = function (_React$Component) {
         { className: 'container' },
         _react2.default.createElement(_VaultDisplay2.default, _extends({
           location: 'franklin',
-          containerStyles: 'left blue-bg',
+          containerStyles: 'top left blue-bg',
           headerColor: 'light-pink'
         }, this.state.franklin)),
         _react2.default.createElement(_VaultDisplay2.default, _extends({
           location: 'canal',
-          containerStyles: 'right light-pink-bg',
+          containerStyles: 'bottom right light-pink-bg',
           headerColor: 'blue'
         }, this.state.canal)),
         _react2.default.createElement(
@@ -27074,7 +27074,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var franklin = exports.franklin = {
   weekday: {
     open: (0, _moment2.default)({ hour: 8, minute: 0 }),
-    close: (0, _moment2.default)({ hour: 9, minute: 0 }) },
+    close: (0, _moment2.default)({ hour: 16, minute: 0 }) },
   weekend: {
     open: (0, _moment2.default)({ hour: 9, minute: 30 }),
     close: (0, _moment2.default)({ hour: 16, minute: 0 }) }

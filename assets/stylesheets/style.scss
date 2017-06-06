@@ -26,22 +26,8 @@
   margin: auto;
 }
 
-.left {
-  float: left;
-  width: 50%;
-  height: 100vh;
-  border-right: 2px solid white;
-}
-
-.right {
-  float: right;
-  width: 50%;
-  height: 100vh;
-  border-left: 2px solid white;
-}
-
 .location-header {
-  margin-top: 11vh;
+  margin-top: 10vh;
 }
 
 .franklin-header {
@@ -74,3 +60,5 @@
   border: 2.5px solid $bone;
   color: $bone;
 }
+
+@import 'responsive';

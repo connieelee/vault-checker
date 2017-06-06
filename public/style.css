@@ -65,20 +65,8 @@
   display: block;
   margin: auto; }
 
-.left {
-  float: left;
-  width: 50%;
-  height: 100vh;
-  border-right: 2px solid white; }
-
-.right {
-  float: right;
-  width: 50%;
-  height: 100vh;
-  border-left: 2px solid white; }
-
 .location-header {
-  margin-top: 11vh; }
+  margin-top: 10vh; }
 
 .franklin-header {
   width: 20%; }
@@ -105,3 +93,46 @@
   border-radius: 8px;
   border: 2.5px solid #fffefd;
   color: #fffefd; }
+
+/* Smartphones (landscape) ----------- */
+@media only screen and (min-width: 321px) and (max-device-width: 740px) and (orientation: landscape) {
+  .left {
+    float: left;
+    width: 50%;
+    height: 100vh;
+    border-right: 2px solid white; }
+  .right {
+    float: right;
+    width: 50%;
+    height: 100vh;
+    border-left: 2px solid white; }
+  .timestamp {
+    visibility: hidden; } }
+
+/* Smartphones (portrait) ----------- */
+/* iPads (landscape) ----------- */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+  .left {
+    float: left;
+    width: 50%;
+    height: 100vh;
+    border-right: 2px solid white; }
+  .right {
+    float: right;
+    width: 50%;
+    height: 100vh;
+    border-left: 2px solid white; } }
+
+/* iPads (portrait) ----------- */
+/* Desktops and laptops ----------- */
+@media only screen and (min-width: 1224px) {
+  .left {
+    float: left;
+    width: 50%;
+    height: 100vh;
+    border-right: 2px solid white; }
+  .right {
+    float: right;
+    width: 50%;
+    height: 100vh;
+    border-left: 2px solid white; } }

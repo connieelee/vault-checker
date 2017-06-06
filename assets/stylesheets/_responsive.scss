@@ -1,0 +1,57 @@
+@mixin horizontal {
+  .left {
+    float: left;
+    width: 50%;
+    height: 100vh;
+    border-right: 2px solid white;
+  }
+
+  .right {
+    float: right;
+    width: 50%;
+    height: 100vh;
+    border-left: 2px solid white;
+  }
+}
+
+@mixin vertical {
+  .top {
+
+  }
+
+  .bottom {
+    
+  }
+}
+
+/* Smartphones (landscape) ----------- */
+@media only screen and (min-width : 321px) and (max-device-width : 740px) and (orientation : landscape) {
+  @include horizontal;
+  .timestamp {
+    visibility: hidden;
+  }
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width : 320px) and (orientation : portrait) {
+  @include vertical;
+}
+
+/* iPads (landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+  @include horizontal;
+}
+
+/* iPads (portrait) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+  @include vertical;
+}
+
+/* Desktops and laptops ----------- */
+@media only screen  and (min-width : 1224px) {
+  @include horizontal;
+}
+
+@media only screen and (max-width : 1223px) {
+  @include vertical;
+}
