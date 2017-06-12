@@ -5,8 +5,8 @@ const defaultMsgs = location => {
   if (!isOpen(location)) return {};
   return {
     specials: {
-      text: 'The specials haven\'t been posted yet. ' +
-            'Hang on tight and check back again soon!',
+      text: 'Today\'s specials haven\'t been tweeted. ' +
+            'Check back again later?',
     },
     soldOut: { text: 'Not sold out yet, hurry in!' },
   };

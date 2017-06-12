@@ -4,38 +4,40 @@ import moment from 'moment';
 
 import VaultDisplay from './VaultDisplay';
 import defaultState from '../defaultState';
-import { getLocation, isSoldOut, listsSpecials } from '../utils';
+import { isOpen, getLocation, isSoldOut, listsSpecials } from '../utils';
 
 class Main extends React.Component {
   constructor() {
     super();
     this.state = {
-      franklin: {},
-      canal: {},
+      franklin: { specials: {}, soldOut: {} },
+      canal: { specials: {}, soldOut: {} },
       lastUpdated: moment(new Date()).format('h:mma'),
     };
   }
 
   componentDidMount() {
-    axios.get('/twitterapi/vaulttweetstoday')
-      .then(res => res.data)
-      .then(tweets => {
-        const nextState = defaultState;
-        tweets.forEach(tweet => {
-          const location = getLocation(tweet);
-          if (location) {
-            const slimTweet = {
-              text: tweet.text,
-              time: moment(tweet.created_at).format('h:mma'),
-            };
+    if (isOpen('franklin') || isOpen('canal')) {
+      axios.get('/twitterapi/vaulttweetstoday')
+        .then(res => res.data)
+        .then(tweets => {
+          const nextState = defaultState;
+          tweets.forEach(tweet => {
+            const location = getLocation(tweet);
+            if (location) {
+              const slimTweet = {
+                text: tweet.text,
+                time: moment(tweet.created_at).format('h:mma'),
+              };
 
-            if (listsSpecials(tweet)) nextState[location].specials = slimTweet;
-            if (isSoldOut(tweet)) nextState[location].soldOut = slimTweet;
-          }
+              if (listsSpecials(tweet)) nextState[location].specials = slimTweet;
+              if (isSoldOut(tweet)) nextState[location].soldOut = slimTweet;
+            }
+          });
+
+          this.setState(nextState);
         });
-
-        this.setState(nextState);
-      });
+    }
   }
 
   render() {

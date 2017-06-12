@@ -3,6 +3,8 @@ import React from 'react';
 import TweetCard from './TweetCard';
 import ClosedSign from './ClosedSign';
 
+import { isOpen } from '../utils';
+
 const VaultDisplay = ({ location, containerStyles, headerColor, specials, soldOut }) => (
   <div className={containerStyles}>
     <div className="vault-img-group">
@@ -10,7 +12,7 @@ const VaultDisplay = ({ location, containerStyles, headerColor, specials, soldOu
         {location} vault
       </h1>
       {
-        !specials && !soldOut ? <ClosedSign location={location} /> :
+        !isOpen(location) ? <ClosedSign location={location} /> :
         <div>
           <TweetCard text={specials.text} time={specials.time} />
           <TweetCard text={soldOut.text} time={soldOut.time} />

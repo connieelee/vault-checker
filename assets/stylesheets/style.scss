@@ -47,18 +47,4 @@
   width: 55%;
 }
 
-.timestamp {
-  width: 12.5em;
-  height: 5.5em;
-  position: fixed;
-  top: 94%;
-  left: 50%;
-  padding-top: 1.13em;
-  margin-top: -105px;
-  margin-left: -110px;
-  border-radius: 8px;
-  border: 2.5px solid $bone;
-  color: $bone;
-}
-
 @import 'responsive';

@@ -7,8 +7,14 @@ export const getLocation = tweet => {
   return null;
 };
 
-export const listsSpecials = tweet => tweet.text.toLowerCase().indexOf('special') > -1;
 export const isSoldOut = tweet => tweet.text.toLowerCase().indexOf('sold out') > -1;
+export const listsSpecials = tweet => (
+  !isSoldOut(tweet) &&
+  (
+    tweet.text.toLowerCase().indexOf('special') > -1 ||
+    tweet.text.toLowerCase().indexOf('has') > -1
+  )
+);
 
 export const isWeekend = day => day === 'Sat' || day === 'Sun';
 export const isOpen = location => {

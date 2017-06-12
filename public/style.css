@@ -81,19 +81,6 @@
 .status-img {
   width: 55%; }
 
-.timestamp {
-  width: 12.5em;
-  height: 5.5em;
-  position: fixed;
-  top: 94%;
-  left: 50%;
-  padding-top: 1.13em;
-  margin-top: -105px;
-  margin-left: -110px;
-  border-radius: 8px;
-  border: 2.5px solid #fffefd;
-  color: #fffefd; }
-
 /* Smartphones (landscape) ----------- */
 @media only screen and (min-width: 321px) and (max-device-width: 740px) and (orientation: landscape) {
   .left {
@@ -107,9 +94,31 @@
     height: 100vh;
     border-left: 2px solid white; }
   .timestamp {
+    width: 12.5em;
+    height: 5.5em;
+    position: fixed;
+    top: 94%;
+    left: 50%;
+    padding-top: 1.13em;
+    margin-top: -105px;
+    margin-left: -110px;
+    border-radius: 8px;
+    border: 2.5px solid #fffefd;
+    color: #fffefd; }
+  .timestamp {
     visibility: hidden; } }
 
 /* Smartphones (portrait) ----------- */
+@media only screen and (max-width: 320px) and (orientation: portrait) {
+  .top {
+    height: 50%;
+    width: 100vw;
+    float: left; }
+  .bottom {
+    height: 50%;
+    width: 100vw;
+    float: left; } }
+
 /* iPads (landscape) ----------- */
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
   .left {
@@ -121,11 +130,33 @@
     float: right;
     width: 50%;
     height: 100vh;
-    border-left: 2px solid white; } }
+    border-left: 2px solid white; }
+  .timestamp {
+    width: 12.5em;
+    height: 5.5em;
+    position: fixed;
+    top: 94%;
+    left: 50%;
+    padding-top: 1.13em;
+    margin-top: -105px;
+    margin-left: -110px;
+    border-radius: 8px;
+    border: 2.5px solid #fffefd;
+    color: #fffefd; } }
 
 /* iPads (portrait) ----------- */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+  .top {
+    height: 50%;
+    width: 100vw;
+    float: left; }
+  .bottom {
+    height: 50%;
+    width: 100vw;
+    float: left; } }
+
 /* Desktops and laptops ----------- */
-@media only screen and (min-width: 1224px) {
+@media only screen and (min-width: 1000px) {
   .left {
     float: left;
     width: 50%;
@@ -135,4 +166,26 @@
     float: right;
     width: 50%;
     height: 100vh;
-    border-left: 2px solid white; } }
+    border-left: 2px solid white; }
+  .timestamp {
+    width: 12.5em;
+    height: 5.5em;
+    position: fixed;
+    top: 94%;
+    left: 50%;
+    padding-top: 1.13em;
+    margin-top: -105px;
+    margin-left: -110px;
+    border-radius: 8px;
+    border: 2.5px solid #fffefd;
+    color: #fffefd; } }
+
+@media only screen and (max-width: 999px) {
+  .top {
+    height: 50%;
+    width: 100vw;
+    float: left; }
+  .bottom {
+    height: 50%;
+    width: 100vw;
+    float: left; } }

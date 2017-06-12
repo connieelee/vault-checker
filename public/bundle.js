@@ -11842,7 +11842,7 @@ module.exports = function bind(fn, thisArg) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.isOpen = exports.isWeekend = exports.isSoldOut = exports.listsSpecials = exports.getLocation = undefined;
+exports.isOpen = exports.isWeekend = exports.listsSpecials = exports.isSoldOut = exports.getLocation = undefined;
 
 var _moment = __webpack_require__(0);
 
@@ -11862,11 +11862,11 @@ var getLocation = exports.getLocation = function getLocation(tweet) {
   return null;
 };
 
-var listsSpecials = exports.listsSpecials = function listsSpecials(tweet) {
-  return tweet.text.toLowerCase().indexOf('special') > -1;
-};
 var isSoldOut = exports.isSoldOut = function isSoldOut(tweet) {
   return tweet.text.toLowerCase().indexOf('sold out') > -1;
+};
+var listsSpecials = exports.listsSpecials = function listsSpecials(tweet) {
+  return !isSoldOut(tweet) && (tweet.text.toLowerCase().indexOf('special') > -1 || tweet.text.toLowerCase().indexOf('has') > -1);
 };
 
 var isWeekend = exports.isWeekend = function isWeekend(day) {
@@ -25857,8 +25857,8 @@ var Main = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).call(this));
 
     _this.state = {
-      franklin: {},
-      canal: {},
+      franklin: { specials: {}, soldOut: {} },
+      canal: { specials: {}, soldOut: {} },
       lastUpdated: (0, _moment2.default)(new Date()).format('h:mma')
     };
     return _this;
@@ -25869,25 +25869,27 @@ var Main = function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      _axios2.default.get('/twitterapi/vaulttweetstoday').then(function (res) {
-        return res.data;
-      }).then(function (tweets) {
-        var nextState = _defaultState2.default;
-        tweets.forEach(function (tweet) {
-          var location = (0, _utils.getLocation)(tweet);
-          if (location) {
-            var slimTweet = {
-              text: tweet.text,
-              time: (0, _moment2.default)(tweet.created_at).format('h:mma')
-            };
+      if ((0, _utils.isOpen)('franklin') || (0, _utils.isOpen)('canal')) {
+        _axios2.default.get('/twitterapi/vaulttweetstoday').then(function (res) {
+          return res.data;
+        }).then(function (tweets) {
+          var nextState = _defaultState2.default;
+          tweets.forEach(function (tweet) {
+            var location = (0, _utils.getLocation)(tweet);
+            if (location) {
+              var slimTweet = {
+                text: tweet.text,
+                time: (0, _moment2.default)(tweet.created_at).format('h:mma')
+              };
 
-            if ((0, _utils.listsSpecials)(tweet)) nextState[location].specials = slimTweet;
-            if ((0, _utils.isSoldOut)(tweet)) nextState[location].soldOut = slimTweet;
-          }
+              if ((0, _utils.listsSpecials)(tweet)) nextState[location].specials = slimTweet;
+              if ((0, _utils.isSoldOut)(tweet)) nextState[location].soldOut = slimTweet;
+            }
+          });
+
+          _this2.setState(nextState);
         });
-
-        _this2.setState(nextState);
-      });
+      }
     }
   }, {
     key: 'render',
@@ -26961,6 +26963,8 @@ var _ClosedSign = __webpack_require__(226);
 
 var _ClosedSign2 = _interopRequireDefault(_ClosedSign);
 
+var _utils = __webpack_require__(59);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var VaultDisplay = function VaultDisplay(_ref) {
@@ -26981,7 +26985,7 @@ var VaultDisplay = function VaultDisplay(_ref) {
         location,
         ' vault'
       ),
-      !specials && !soldOut ? _react2.default.createElement(_ClosedSign2.default, { location: location }) : _react2.default.createElement(
+      !(0, _utils.isOpen)(location) ? _react2.default.createElement(_ClosedSign2.default, { location: location }) : _react2.default.createElement(
         'div',
         null,
         _react2.default.createElement(_TweetCard2.default, { text: specials.text, time: specials.time }),
@@ -27016,7 +27020,7 @@ var defaultMsgs = function defaultMsgs(location) {
   if (!(0, _utils.isOpen)(location)) return {};
   return {
     specials: {
-      text: 'The specials haven\'t been posted yet. ' + 'Hang on tight and check back again soon!'
+      text: 'Today\'s specials haven\'t been tweeted. ' + 'Check back again later?'
     },
     soldOut: { text: 'Not sold out yet, hurry in!' }
   };
