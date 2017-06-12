@@ -1,4 +1,12 @@
 @mixin horizontal {
+  .container {
+    &::after {
+      content: "";
+      clear: both;
+      display: block;
+    }
+  }
+
   .left {
     float: left;
     width: 50%;
@@ -12,64 +20,35 @@
     height: 100vh;
     border-left: 2px solid white;
   }
-
-  .timestamp {
-    width: 12.5em;
-    height: 5.5em;
-    position: fixed;
-    top: 94%;
-    left: 50%;
-    padding-top: 1.13em;
-    margin-top: -105px;
-    margin-left: -110px;
-    border-radius: 8px;
-    border: 2.5px solid $bone;
-    color: $bone;
-  }
 }
 
 @mixin vertical {
-  .top {
-    height: 50%;
-    width: 100vw;
-    float: left;
-  }
-
-  .bottom {
-    height: 50%;
-    width: 100vw;
-    float: left;
+  .container {
+    display: flex;
+    flex-direction: column;
   }
 }
 
-/* Smartphones (landscape) ----------- */
+/* small screen (landscape) */
 @media only screen and (min-width: 321px) and (max-device-width: 740px) and (orientation: landscape) {
   @include horizontal;
   .timestamp {
-    visibility: hidden;
+    width: 11em;
+    height: 5.5em;
+    position: fixed;
+    top: 98%;
+    left: 53.5%;
+    padding-top: 1.2em;
+    border: 2.5px solid $bone;
+    color: $bone;
+    font-size: smaller;
   }
 }
 
-/* Smartphones (portrait) ----------- */
-@media only screen and (max-width: 320px) and (orientation: portrait) {
-  @include vertical;
-}
-
-/* iPads (landscape) ----------- */
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+@media only screen and (orientation: landscape) {
   @include horizontal;
 }
 
-/* iPads (portrait) ----------- */
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
-  @include vertical;
-}
-
-/* Desktops and laptops ----------- */
-@media only screen  and (min-width: 1000px) {
-  @include horizontal;
-}
-
-@media only screen and (max-width: 999px) {
+@media only screen and (orientation: portrait) {
   @include vertical;
 }
