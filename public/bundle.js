@@ -25899,12 +25899,12 @@ var Main = function (_React$Component) {
         { className: 'container' },
         _react2.default.createElement(_VaultDisplay2.default, _extends({
           location: 'franklin',
-          containerStyles: 'top left blue-bg',
+          containerStyles: 'left vertical-half blue-bg',
           headerColor: 'light-pink'
         }, this.state.franklin)),
         _react2.default.createElement(_VaultDisplay2.default, _extends({
           location: 'canal',
-          containerStyles: 'bottom right light-pink-bg',
+          containerStyles: 'right vertical-half light-pink-bg',
           headerColor: 'blue'
         }, this.state.canal)),
         _react2.default.createElement(

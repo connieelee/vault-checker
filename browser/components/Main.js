@@ -45,13 +45,13 @@ class Main extends React.Component {
       <div className="container">
         <VaultDisplay
           location="franklin"
-          containerStyles="top left blue-bg"
+          containerStyles="left vertical-half blue-bg"
           headerColor="light-pink"
           {...this.state.franklin}
         />
         <VaultDisplay
           location="canal"
-          containerStyles="bottom right light-pink-bg"
+          containerStyles="right vertical-half light-pink-bg"
           headerColor="blue"
           {...this.state.canal}
         />

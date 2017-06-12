@@ -33,7 +33,6 @@
   color: lightgray; }
 
 .tweet-card {
-  width: 65%;
   margin: 4% auto;
   background: #fffefd;
   border-radius: 5px;
@@ -63,15 +62,8 @@
 .location-header {
   margin-top: 10vh; }
 
-.franklin-header {
-  width: 20%; }
-
-.canal-header {
-  width: 16%; }
-
 .vault-img-group {
-  position: relative;
-  top: 15vh; }
+  width: 65%; }
 
 .status-img {
   width: 55%; }
@@ -105,6 +97,10 @@
     width: 50%;
     height: 100vh;
     border-left: 2px solid white; }
+  .vault-img-group {
+    margin: 0 auto;
+    position: relative;
+    top: 15vh; }
   .timestamp {
     width: 11em;
     height: 5.5em;
@@ -130,9 +126,26 @@
     float: right;
     width: 50%;
     height: 100vh;
-    border-left: 2px solid white; } }
+    border-left: 2px solid white; }
+  .vault-img-group {
+    margin: 0 auto;
+    position: relative;
+    top: 15vh; } }
 
 @media only screen and (orientation: portrait) {
   .container {
     display: flex;
-    flex-direction: column; } }
+    flex-direction: column; }
+  .vertical-half {
+    flex: 0 0 100%;
+    min-height: 50vh;
+    max-height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+  .location-header {
+    margin: 0; } }
+
+@media only screen and (max-width: 800px) and (orientation: portrait) {
+  .timestamp {
+    visibility: hidden; } }

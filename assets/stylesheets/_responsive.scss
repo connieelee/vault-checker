@@ -20,12 +20,31 @@
     height: 100vh;
     border-left: 2px solid white;
   }
+
+  .vault-img-group {
+    margin: 0 auto;
+    position: relative;
+    top: 15vh;
+  }
 }
 
 @mixin vertical {
   .container {
     display: flex;
     flex-direction: column;
+  }
+
+  .vertical-half {
+    flex: 0 0 100%;
+    min-height: 50vh;
+    max-height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .location-header {
+    margin: 0;
   }
 }
 
@@ -51,4 +70,10 @@
 
 @media only screen and (orientation: portrait) {
   @include vertical;
+}
+
+@media only screen and (max-width: 800px) and (orientation: portrait) {
+  .timestamp {
+    visibility: hidden;
+  }
 }
